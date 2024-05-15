@@ -1,0 +1,60 @@
+[versions]
+agp = "8.2.2"
+kotlin = "1.9.22"
+core-ktx = "1.13.0"
+junit = "4.13.2"
+androidx-test-ext-junit = "1.1.5"
+espresso-core = "3.5.1"
+appcompat = "1.6.1"
+material = "1.11.0"
+corotuine = "1.7.1"
+retrofit-client = "2.9.0"  # Replace with your desired version
+hilt-android = "2.51.1"
+moshi = "1.13.0"
+retrofit-moshi = "2.9.0"
+http-logging = "4.9.0"
+activity = "1.8.0"
+constraintlayout = "2.1.4"
+androidx-viewmodel = "2.7.0"
+activity-ktx = "1.9.0"
+fragment-ktx = "1.7.0"
+timber = "5.0.1"
+paging3 = "3.1.1"
+
+
+
+
+[libraries]
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt-android" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt-android" }
+retrofit-client = { module = "com.squareup.retrofit2:retrofit", version.ref="retrofit-client"}
+coroutie = {module="org.jetbrains.kotlinx:kotlinx-coroutines-android",version.ref="corotuine"}
+moshi = {module = "com.squareup.moshi:moshi-kotlin", version.ref="moshi"}
+retrofit-moshi = {module = "com.squareup.retrofit2:converter-moshi",version.ref = "retrofit-moshi"}
+nework-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "http-logging"}
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+viewmodel-lifecycle = {group = "androidx.lifecycle", name="lifecycle-viewmodel-ktx" ,version.ref = "androidx-viewmodel"}
+lifecycle-runtime = {group = "androidx.lifecycle", name="lifecycle-runtime-ktx" ,version.ref = "androidx-viewmodel"}
+activity-ktx = {group = "androidx.activity", name="activity-ktx" ,version.ref = "activity-ktx"}
+fragment-ktx = {group = "androidx.fragment", name="fragment-ktx" ,version.ref = "fragment-ktx"}
+timber = { group="com.jakewharton.timber",name="timber", version.ref="timber"}
+paging3 = {group="androidx.paging" , name="paging-runtime",version.ref="paging3"}
+
+
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+hilt-android-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt-android" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt" , version.ref="kotlin"}
+
+
+
