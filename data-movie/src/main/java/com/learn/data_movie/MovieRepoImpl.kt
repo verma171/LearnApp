@@ -9,7 +9,10 @@ import androidx.paging.cachedIn
 import com.learn.core.model.Movies
 import com.learn.core.model.Results
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class MovieRepoImpl @Inject constructor(val movieService: MovieService) : MovieRepository {
@@ -32,16 +35,20 @@ class MovieRepoImpl @Inject constructor(val movieService: MovieService) : MovieR
                     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Results> {
                         val position = params.key ?: 1
                         return try {
-                            val movies = movieService.getMoviesList(position)
-                            LoadResult.Page(
-                                prevKey = if (position == 1) null else position - 1,
-                                nextKey = position + 1,
-                                data = movies.results
-                            )
+                            if (position > 1) {
+                                delay(2000)
+                            }
+                            withContext(Dispatchers.IO) {
+                                val movies = movieService.getMoviesList(position)
+                                LoadResult.Page(
+                                    prevKey = if (position == 1) null else position - 1,
+                                    nextKey = position + 1,
+                                    data = movies.results
+                                )
+                            }
                         } catch (e: Exception) {
                             LoadResult.Error(e)
                         }
-
                     }
                 }
             }

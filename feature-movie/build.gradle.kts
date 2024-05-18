@@ -51,6 +51,7 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:common"))
     implementation(libs.paging3)
+    /*implementation(libs.viewmodel.)*/
 
 
     testImplementation(libs.junit)

@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="wrap_content">
-<View
-    android:background="@android:color/black"
-    android:layout_width="match_parent"
-    android:layout_height="2dp"></View>
+
+   <View
+       android:background="@android:color/black"
+       android:layout_width="match_parent"
+       android:layout_height="2dp" />
    <TextView
        android:gravity="center"
        android:id="@+id/title"
+       android:background="@color/white"
        android:textColor="@android:color/black"
        android:layout_width="match_parent"
        android:text="ravi"

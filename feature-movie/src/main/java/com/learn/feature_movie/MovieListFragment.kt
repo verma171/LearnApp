@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.learn.feature_movie.databinding.FragmentMovielistBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
@@ -18,7 +21,6 @@ import kotlinx.coroutines.launch
 class MovieListFragment : Fragment() {
     val viewmodel:MovieViewModel by viewModels()
     var binding:FragmentMovielistBinding? = null
-    var adapter:MovieDataAdapter? = null
     private val TAG = "MovieListFragment"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,21 +36,25 @@ class MovieListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         initRecyclerView(view)
-        lifecycleScope.launch {
-                viewmodel.list.collect{
-                    adapter?.submitData(lifecycle,it)
-                }
-        }
+
+
     }
 
     private fun initRecyclerView(view: View) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView?.layoutManager = LinearLayoutManager(this.requireContext())
         binding?.recyclerView?.setHasFixedSize(true)
-        adapter = MovieDataAdapter()
-        recyclerView?.adapter = adapter
+        val movieDataAdapter = MovieDataAdapter()
+        recyclerView?.adapter =movieDataAdapter.withLoadStateFooter(FooterAdapter{
+            movieDataAdapter.retry()
+        })
+
+        lifecycleScope.launch {
+            viewmodel.list.collect{
+                movieDataAdapter.submitData(lifecycle,it)
+            }
+        }
     }
 
     override fun onDestroy() {
