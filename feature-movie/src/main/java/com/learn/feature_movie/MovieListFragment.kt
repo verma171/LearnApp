@@ -1,6 +1,7 @@
 package com.learn.feature_movie
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.learn.feature_movie.databinding.FragmentMovielistBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 
@@ -51,7 +53,9 @@ class MovieListFragment : Fragment() {
         })
 
         lifecycleScope.launch {
+
             viewmodel.list.collect{
+                Log.d(TAG,"Flow Collected")
                 movieDataAdapter.submitData(lifecycle,it)
             }
         }

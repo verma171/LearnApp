@@ -1,5 +1,6 @@
 package com.learn.core.model
 
+import androidx.room.Entity
 import com.squareup.moshi.Json
 
 
