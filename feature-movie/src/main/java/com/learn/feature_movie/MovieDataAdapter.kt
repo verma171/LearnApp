@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.learn.core.model.Results
 
-class MovieDataAdapter : PagingDataAdapter<Results, MovieDataAdapter.MovieViewHolder>(COMPARATOR) {
+class MovieDataAdapter(val callback:()->Unit) : PagingDataAdapter<Results, MovieDataAdapter.MovieViewHolder>(COMPARATOR) {
 
     companion object {
         private val COMPARATOR = object : DiffUtil.ItemCallback<Results>() {
@@ -22,8 +22,13 @@ class MovieDataAdapter : PagingDataAdapter<Results, MovieDataAdapter.MovieViewHo
             }
         }
     }
-    class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MovieViewHolder(itemView: View,callback: () -> Unit) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.findViewById<TextView>(R.id.title)
+        init {
+            itemView.setOnClickListener{
+                callback.invoke()
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
@@ -36,6 +41,8 @@ class MovieDataAdapter : PagingDataAdapter<Results, MovieDataAdapter.MovieViewHo
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
-        return MovieViewHolder(view)
+        return MovieViewHolder(view){
+            callback.invoke()
+        }
     }
 }

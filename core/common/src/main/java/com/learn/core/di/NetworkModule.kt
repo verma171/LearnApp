@@ -21,7 +21,7 @@ class NetworkModule {
 
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org"
-        private const val TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDJkOTJkNDgzMzg2ZTI1YzJjOTUzYWZmZmZkZGNlYiIsInN1YiI6IjY1OGMwZjQ4NjcyOGE4NmQyZDI4MTExMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.97d5gHuGv8D0e3fmviraZr4ovxzu6lBbe19zoMrGaUM"
+        private const val TOKEN = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDJkOTJkNDgzMzg2ZTI1YzJjOTUzYWZmZmZkZGNlYiIsIm5iZiI6MTcyMTcxMTc1Ny4yNDE0NTgsInN1YiI6IjY1OGMwZjQ4NjcyOGE4NmQyZDI4MTExMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eMMqiEeGOHZM8INM1JcrxiTUasxHJIJC2lL4iX4ak98"
     }
 
     @Singleton

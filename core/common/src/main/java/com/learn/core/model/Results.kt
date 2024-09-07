@@ -1,5 +1,7 @@
 package com.learn.core.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.squareup.moshi.Json
 
 
